@@ -1,8 +1,10 @@
-const DB_URL = require("dotenv")
+require("dotenv").config()
+
+console.log("ENV:", process.env.DB_URL)
 
 module.exports = {
   development: {
-    url: DB_URL,
+    url: process.env.DB_URL,
     dialect: "postgres",
   },
   test: {
@@ -10,13 +12,13 @@ module.exports = {
     password: null,
     database: "database_test",
     host: "127.0.0.1",
-    dialect: "mysql",
+    dialect: "postgres",
   },
   production: {
     username: "root",
     password: null,
     database: "database_production",
     host: "127.0.0.1",
-    dialect: "mysql",
+    dialect: "postgres",
   },
 }
