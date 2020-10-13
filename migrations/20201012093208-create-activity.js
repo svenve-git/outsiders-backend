@@ -10,11 +10,10 @@ module.exports = {
       },
       title: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       date: {
-        type: Sequelize.TIME,
-        allowNull: false,
+        type: Sequelize.DATEONLY,
+        allowNull: true,
       },
       hostId: {
         type: Sequelize.INTEGER,
@@ -29,20 +28,23 @@ module.exports = {
       groupSize: {
         type: Sequelize.INTEGER,
       },
-      longitude: {
+      latitude: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      latitude: {
+      longitude: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
       activityTypeId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: "activityTypes",
           key: "id",
         },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       private: {
         type: Sequelize.BOOLEAN,
