@@ -24,15 +24,15 @@ module.exports = (sequelize, DataTypes) => {
   activity.init(
     {
       title: DataTypes.STRING,
+      date: DataTypes.DATEONLY,
       hostId: DataTypes.INTEGER,
-      participantId: DataTypes.INTEGER,
       groupSize: DataTypes.INTEGER,
-      longitude: DataTypes.INTEGER,
       latitude: DataTypes.INTEGER,
+      longitude: DataTypes.INTEGER,
       activityTypeId: DataTypes.INTEGER,
       private: DataTypes.BOOLEAN,
-      startingTime: DataTypes.DATE,
-      endingTime: DataTypes.DATE,
+      startingTime: DataTypes.TIME,
+      endingTime: DataTypes.TIME,
     },
     {
       sequelize,
