@@ -11,14 +11,16 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       activity.belongsToMany(models.user, {
         through: "participants",
-        foreignKey: "userId",
-        as: "participants",
-      })
-      activity.belongsTo(models.user, {
-        foreignKey: "hostId",
-        as: "host",
-      })
-      activity.belongsTo(models.activityType, { foreignKey: "activityTypeId" })
+        foreignKey: "activityId",
+        as: "participant",
+      }),
+        activity.belongsTo(models.user, {
+          foreignKey: "hostId",
+          as: "host",
+        }),
+        activity.belongsTo(models.activityType, {
+          foreignKey: "activityTypeId",
+        })
     }
   }
   activity.init(

@@ -13,11 +13,8 @@ module.exports = (sequelize, DataTypes) => {
         through: "participants",
         foreignKey: "userId",
         as: "participant",
-      }),
-        user.hasMany(models.activity, {
-          as: "host",
-          foreignKey: "hostId",
-        })
+      })
+      user.hasMany(models.activity, { as: "host", foreignKey: "hostId" })
     }
   }
   user.init(
