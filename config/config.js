@@ -1,6 +1,6 @@
 require("dotenv").config()
 
-console.log("ENV:", process.env.DB_URL)
+// console.log("ENV:", process.env.DB_URL)
 
 module.exports = {
   development: {
