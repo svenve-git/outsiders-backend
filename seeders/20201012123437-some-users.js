@@ -1,4 +1,6 @@
 "use strict"
+const bcrypt = require("bcrypt")
+const { SALT_ROUNDS } = require("../config/constants")
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -6,7 +8,7 @@ module.exports = {
       {
         fullName: "Test",
         email: "test@mail.com",
-        password: "123",
+        password: bcrypt.hashSync("123", SALT_ROUNDS),
         address: "Prinsengracht 1, Amsterdam",
         gender: "m",
         createdAt: new Date(),
@@ -15,7 +17,7 @@ module.exports = {
       {
         fullName: "Case",
         email: "case@mail.com",
-        password: "abc",
+        password: bcrypt.hashSync("abc", SALT_ROUNDS),
         address: "Haarlemmerdijk 4, Amsterdam",
         gender: "m",
         createdAt: new Date(),
@@ -24,7 +26,7 @@ module.exports = {
       {
         fullName: "Annette",
         email: "annette@mail.com",
-        password: "def",
+        password: bcrypt.hashSync("def", SALT_ROUNDS),
         address: "Kromboomsloot 3, Amsterdam",
         gender: "f",
         createdAt: new Date(),
@@ -33,7 +35,7 @@ module.exports = {
       {
         fullName: "Pierre",
         email: "pierre@mail.com",
-        password: "1234",
+        password: bcrypt.hashSync("1234", SALT_ROUNDS),
         address: "Sarphatistraat 236, Amsterdam",
         gender: "m",
         createdAt: new Date(),
@@ -42,7 +44,7 @@ module.exports = {
       {
         fullName: "Linda",
         email: "linda@mail.com",
-        password: "secret",
+        password: bcrypt.hashSync("secret", SALT_ROUNDS),
         address: "Zeilstraat 33, Amsterdam",
         gender: "f",
         createdAt: new Date(),
@@ -51,7 +53,7 @@ module.exports = {
       {
         fullName: "Marianne",
         email: "marianne@mail.com",
-        password: "wachtwoord",
+        password: bcrypt.hashSync("wachtwoord", SALT_ROUNDS),
         address: "Middenweg 21, Amsterdam",
         gender: "f",
         createdAt: new Date(),
@@ -60,7 +62,7 @@ module.exports = {
       {
         fullName: "Ricardo",
         email: "ricardo@mail.com",
-        password: "geheim",
+        password: bcrypt.hashSync("geheim", SALT_ROUNDS),
         address: "Buitenzagerij 2, Amsterdam",
         gender: "m",
         createdAt: new Date(),
@@ -69,7 +71,7 @@ module.exports = {
       {
         fullName: "Manuel",
         email: "manuel@mail.com",
-        password: "supersecret",
+        password: bcrypt.hashSync("supersecret", SALT_ROUNDS),
         address: "Van Woustraat 12, Amsterdam",
         gender: "m",
         createdAt: new Date(),
