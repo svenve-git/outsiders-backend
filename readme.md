@@ -29,5 +29,7 @@ Of course, the main reason for this app is for me to practice & learn full stack
 ## Documentation
 
 [Front End](https://github.com/svenve-git/outsiders-frontend)
+
 [Wireframe](./docs/Wireframe_v1.png)
+
 [Database Diagram](./docs/Database_diagram.png)
