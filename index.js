@@ -13,13 +13,16 @@ app.use(express.json())
 // Option 2: take req and return user in context
 
 const auth = async ({ req }) => {
+  console.log("headers:", req.headers.authorization)
   const token =
-    req.headers.authentication && req.headers.authentication.split(" ")[1]
+    req.headers.authorization && req.headers.authorization.split(" ")[1]
+  console.log("token", token)
   try {
-    const userId = toData(token)
+    const auth = toData(token)
 
-    return { userId, db }
+    return { auth, db }
   } catch (e) {
+    console.log("error:", e)
     return { db }
   }
 }
