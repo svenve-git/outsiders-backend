@@ -1,6 +1,14 @@
 const { gql } = require("apollo-server")
 
+/**
+ * To Do:
+ * add scalar types Date / Time / Location?
+ */
+
 const typeDefs = gql`
+  scalar Date
+  scalar Time
+
   type User {
     id: ID!
     fullName: String!
@@ -8,21 +16,21 @@ const typeDefs = gql`
     password: String!
     address: String!
     gender: String!
+    activities: [Activity]
   }
 
   type Activity {
     id: ID!
     title: String!
-    date: String!
-    host: User!
+    date: Date!
+    hostId: Int
+    host: User
     participants: [User]
-    groupSize: Int
-    latitude: Int!
-    longitude: Int!
-    activityTypeId: Int!
-    private: Boolean
-    startingTime: Int!
-    endingTime: Int
+    latitude: Float!
+    longitude: Float!
+    activityType: ActivityType
+    isPrivate: Boolean
+    startingTime: String!
   }
 
   type ActivityType {
@@ -32,7 +40,7 @@ const typeDefs = gql`
     icon: String
   }
 
-  type Login {
+  type LoggedIn {
     token: String!
     user: User!
   }
@@ -41,12 +49,14 @@ const typeDefs = gql`
   # clients can execute, along with the return type for each. In this
   # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
-    user(id: Int!): User
-    users: [User]
-    activity(id: Int!): Activity
-    activities: [Activity]
-    activityType(id: Int!): ActivityType
-    activityTypes: [ActivityType]
+    findUser(id: Int!): User
+    allUsers: [User]
+    currentUser: User
+    findActivity(id: Int!): Activity
+    allActivities: [Activity]
+    tenActivities: [Activity]
+    findActivityType(id: Int!): ActivityType
+    allActivityTypes: [ActivityType]
   }
 
   type Mutation {
@@ -56,8 +66,18 @@ const typeDefs = gql`
       password: String!
       address: String!
       gender: String!
-    ): Login!
-    login(email: String!, password: String!): Login!
+    ): String!
+    login(email: String!, password: String!): String!
+    createActivity(
+      title: String!
+      date: Date!
+      hostId: Int!
+      latitude: Float!
+      longitude: Float!
+      activityTypeId: Int!
+      isPrivate: Boolean!
+      startingTime: String!
+    ): Activity
   }
 `
 

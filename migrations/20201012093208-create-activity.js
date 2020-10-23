@@ -10,6 +10,7 @@ module.exports = {
       },
       title: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       date: {
         type: Sequelize.DATEONLY,
@@ -25,15 +26,12 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "SET NULL",
       },
-      groupSize: {
-        type: Sequelize.INTEGER,
-      },
       latitude: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
         allowNull: false,
       },
       longitude: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
         allowNull: false,
       },
       activityTypeId: {
@@ -46,15 +44,12 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "SET NULL",
       },
-      private: {
+      isPrivate: {
         type: Sequelize.BOOLEAN,
       },
       startingTime: {
-        type: Sequelize.TIME,
+        type: Sequelize.STRING,
         allowNull: false,
-      },
-      endingTime: {
-        type: Sequelize.TIME,
       },
       createdAt: {
         allowNull: false,
