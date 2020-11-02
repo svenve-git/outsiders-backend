@@ -104,7 +104,7 @@ const resolvers = {
       })
       const token = toJWT({ userId: newUser.dataValues.id })
       delete newUser.dataValues["password"]
-      return token
+      return { token, user: user.dataValues }
     },
 
     /** Login resolver with validation set up so an invalid login doesn't reveal whether an email is in fact registered */
@@ -114,8 +114,9 @@ const resolvers = {
         throw new UserInputError("User not found or incorrect password")
       }
       delete user.dataValues["password"]
+      console.log("what is left of the user?:", user.dataValues)
       const token = toJWT({ userId: user.id })
-      return token
+      return { token, user: user.dataValues }
     },
 
     /** Create Activity resolver */
