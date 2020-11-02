@@ -40,7 +40,7 @@ const typeDefs = gql`
     icon: String
   }
 
-  type LoggedIn {
+  type LoginResponse {
     token: String!
     user: User!
   }
@@ -66,8 +66,8 @@ const typeDefs = gql`
       password: String!
       address: String!
       gender: String!
-    ): String!
-    login(email: String!, password: String!): String!
+    ): LoginResponse!
+    login(email: String!, password: String!): LoginResponse!
     createActivity(
       title: String!
       date: Date!
